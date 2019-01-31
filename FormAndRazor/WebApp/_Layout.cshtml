@@ -9,14 +9,15 @@
 </head>
 <body>
     <div class="container-fluid">
+        <!-- this is the menu placeholder-->
+        @RenderPage("~/_Menu.cshtml")
+        <br/><br/>
         <div class="jumbotron">
             @RenderSection("banner")
         </div>
-
         @RenderBody()
         <hr style="height:5px" />
         @RenderSection("footer", required: false)
     </div>
-    
 </body>
 </html>
