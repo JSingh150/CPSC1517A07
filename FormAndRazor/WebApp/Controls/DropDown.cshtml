@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
     Page.Title = "Dropdown";
+
 }
 @section head{
 
@@ -10,7 +11,21 @@
 @section banner{
     <h1>DropDown (select) for Razor Form Samples</h1>
 }
-
+<form id="theform" method="post">
+    <div class="row">
+        <div class="col-md-offset-4">
+            <label for="pagesselection">Select Control Example</label>
+            &nbsp;&nbsp;
+            <select id="pageselection" name="pageselection">
+                <option value="">select ...</option>
+                <option value="TextBoxes">TextBoxes</option>
+                <option value="RadioButtons">RadioButtons</option>
+                <option value="CheckBoxes">CheckBoxes</option>
+            </select>
+            &nbsp;&nbsp;
+            <button type="submit" id="formbutton"
+        </div>
+        </div></form>
 
 @section footer{
     &copy; CPSC1517 Nait, all rights reservered
