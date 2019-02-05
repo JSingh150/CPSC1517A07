@@ -2,6 +2,7 @@
     Layout = "~/_Layout.cshtml";
     Page.Title = "Dropdown";
 
+    var selection = Request.Form["pageselection"];
 }
 @section head{
 
@@ -11,10 +12,47 @@
 @section banner{
     <h1>DropDown (select) for Razor Form Samples</h1>
 }
+
+@if (IsPost)
+{
+    //no button descision (only one button)
+    //validation
+    //the validation in this sample will be done inside the switch
+    //if a page was not selected then the switch default will handle
+    //     the select ... option
+    switch(selection.ToUpper())
+    {
+        case "TEXTBOXES":
+            {
+                //the object class for data going out is Response
+                //the method to direct yourself to another page is .Redirect(page)
+                //we will use relative addressing to get to another page
+                Response.Redirect("TextBoxes.cshtml");
+                break;
+            }
+        case "RADIOBUTTONS":
+            {
+                Response.Redirect("RadioButtons.cshtml");
+                break;
+            }
+        case "CHECKBOXES":
+            {
+                Response.Redirect("CheckBoxes.cshtml");
+                break;
+            }
+        default:
+            {
+                <p><span style="color:firebrick"><strong>
+                     Select the sample you wish to view.</strong></span></p>
+                break;
+            }
+    }
+}
+
 <form id="theform" method="post">
     <div class="row">
         <div class="col-md-offset-4">
-            <label for="pagesselection">Select Control Example</label>
+            <label for="pageselection">Select control example:</label>
             &nbsp;&nbsp;
             <select id="pageselection" name="pageselection">
                 <option value="">select ...</option>
@@ -23,10 +61,13 @@
                 <option value="CheckBoxes">CheckBoxes</option>
             </select>
             &nbsp;&nbsp;
-            <button type="submit" id="formbutton"
+            <button type="submit" id="formbutton" name="formbutton"
+                    value="Submit" class="btn btn-primary">
+                Go To ...
+            </button>
         </div>
-        </div></form>
-
+    </div>
+</form>
 @section footer{
     &copy; CPSC1517 Nait, all rights reservered
 }
